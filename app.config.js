@@ -68,7 +68,7 @@ module.exports = ({ config }) => ({
   },
   extra: {
     eas: {
-      projectId: 'your-project-id'
+      projectId: process.env.EXPO_PUBLIC_PROJECT_ID || 'dummy-id'
     }
   }
 });

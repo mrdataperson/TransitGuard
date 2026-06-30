@@ -1,6 +1,4 @@
-import { ConfigContext, ExpoConfig } from 'expo/config';
-
-export default ({ config }: ConfigContext): ExpoConfig => ({
+module.exports = ({ config }) => ({
   ...config,
   name: 'TransitGuard',
   slug: 'transitguard',

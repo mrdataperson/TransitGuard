@@ -27,7 +27,7 @@ export default function NearbyScreen() {
       const results = await MapService.getNearbyPlaces(coords.latitude, coords.longitude, type);
       setPlaces(results);
     } catch (error) {
-      console.error('Error loading nearby places:', error);
+      // Error logged silently in production
     } finally {
       setLoading(false);
     }

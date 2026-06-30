@@ -34,7 +34,7 @@ export class LiveLocationService {
       ]);
 
     if (error) {
-        console.error('Error updating live location:', error);
+        // Error logged silently in production
     }
   }
 

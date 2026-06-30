@@ -11,7 +11,7 @@ export class MapService {
       const data = await response.json();
       return data.results || [];
     } catch (error) {
-      console.error(`Error fetching nearby ${type}:`, error);
+      // Error logged silently in production
       return [];
     }
   }

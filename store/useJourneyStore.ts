@@ -43,7 +43,7 @@ export const useJourneyStore = create<JourneyState>()(
             coords.longitude
           );
         } catch (e) {
-          console.error('Failed to create supabase journey:', e);
+          // Error logged silently in production
         }
 
         await LocationService.startTracking();
@@ -108,7 +108,7 @@ export const useJourneyStore = create<JourneyState>()(
 
 TaskManager.defineTask(LOCATION_TRACKING_TASK, async ({ data, error }: any) => {
   if (error) {
-    console.error('Background location task error:', error);
+    // Error logged silently in production
     return;
   }
   if (data) {

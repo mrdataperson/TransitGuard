@@ -17,9 +17,7 @@ module.exports = ({ config }) => ({
         'fetch'
       ]
     },
-    config: {
-      googleMapsApiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY
-    }
+    config: {}
   },
   android: {
     adaptiveIcon: {
@@ -35,9 +33,7 @@ module.exports = ({ config }) => ({
       'VIBRATE',
       'NOTIFICATIONS'
     ],
-    config: {
-      googleMapsApiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY
-    }
+    config: {}
   },
   web: {
     bundler: 'metro',

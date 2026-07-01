@@ -3,7 +3,7 @@
 ## Current Constraints
 1. **Battery Consumption**: High-accuracy GPS tracking (required for safety) can impact battery life on longer journeys.
 2. **Offline Support**: Proximity alerts require cached map data or an active connection for destination verification, though basic location math remains functional.
-3. **Map Provider**: Dependency on Google Maps SDK. Substitution with OpenStreetMap is not currently implemented.
+3. **OSM Data Accuracy**: Availability and accuracy of bus stop locations depend on OpenStreetMap contributors in the specific region.
 4. **Task Priority**: On some Android devices, "Aggressive Power Saving" modes may still throttle background tasks despite permissions.
 
 ## Planned Future Enhancements

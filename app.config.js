@@ -21,7 +21,9 @@ module.exports = ({ config }) => ({
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: './assets/images/adaptive-icon.png',
+      foregroundImage: './assets/images/android-icon-foreground.png',
+      backgroundImage: './assets/images/android-icon-background.png',
+      monochromeImage: './assets/images/android-icon-monochrome.png',
       backgroundColor: '#ffffff'
     },
     package: 'com.transitguard.app',
@@ -31,7 +33,7 @@ module.exports = ({ config }) => ({
       'ACCESS_BACKGROUND_LOCATION',
       'FOREGROUND_SERVICE',
       'VIBRATE',
-      'NOTIFICATIONS'
+      'POST_NOTIFICATIONS'
     ],
     config: {}
   },

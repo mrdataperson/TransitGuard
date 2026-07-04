@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { View, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-import { TextInput, List, Text, ActivityIndicator, useTheme } from 'react-native-paper';
+import { TextInput, List, ActivityIndicator, useTheme } from 'react-native-paper';
 
 interface Place {
   display_name: string;
@@ -39,7 +39,7 @@ export const PlaceAutocomplete: React.FC<PlaceAutocompleteProps> = ({ placeholde
       );
       const data = await response.json();
       setResults(data);
-    } catch (error) {
+    } catch {
       // Error handled silently
     } finally {
       setLoading(false);

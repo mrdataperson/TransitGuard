@@ -10,13 +10,14 @@ import {
   TextInput,
   Button,
   useTheme,
+  Snackbar,
 } from 'react-native-paper';
 import { useEmergencyStore } from '../../store/useEmergencyStore';
 import { EmergencyService, EmergencyContact } from '../../services/EmergencyService';
 
 export default function EmergencyScreen() {
   const theme = useTheme();
-  const { contacts, fetchContacts, addContact, updateContact, deleteContact, isLoading } =
+  const { contacts, fetchContacts, addContact, updateContact, deleteContact, isLoading, error } =
     useEmergencyStore();
   const [modalVisible, setModalVisible] = useState(false);
   const [editingContact, setEditingContact] = useState<EmergencyContact | null>(null);
@@ -109,6 +110,14 @@ export default function EmergencyScreen() {
       </Portal>
 
       <FAB icon="plus" style={styles.fab} onPress={() => handleOpenModal()} />
+
+      <Snackbar
+        visible={!!error}
+        onDismiss={() => useEmergencyStore.setState({ error: null })}
+        duration={4000}
+      >
+        {error}
+      </Snackbar>
     </View>
   );
 }

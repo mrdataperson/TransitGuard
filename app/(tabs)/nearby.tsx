@@ -26,7 +26,7 @@ export default function NearbyScreen() {
       setUserLocation(coords);
       const results = await MapService.getNearbyPlaces(coords.latitude, coords.longitude, type);
       setPlaces(results);
-    } catch (error) {
+    } catch {
       // Error logged silently in production
     } finally {
       setLoading(false);

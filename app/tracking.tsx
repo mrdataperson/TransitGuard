@@ -86,7 +86,7 @@ export default function TrackingScreen() {
                       message: `Follow my journey live on TransitGuard: ${url}`,
                       url: url,
                     });
-                  } catch (error) {
+                  } catch {
                     setSnackbarVisible(true);
                   }
                 }

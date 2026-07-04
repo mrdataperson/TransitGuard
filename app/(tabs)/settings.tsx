@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { List, Switch, useTheme, Divider, Text } from 'react-native-paper';
+import { useAuthStore } from '../../store/useAuthStore';
 
 export default function SettingsScreen() {
   const theme = useTheme();
+  const { signOut } = useAuthStore();
   const [isDarkMode, setIsDarkMode] = React.useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = React.useState(true);
 
@@ -40,7 +42,7 @@ export default function SettingsScreen() {
           title="Logout"
           titleStyle={{ color: theme.colors.error }}
           left={(props) => <List.Icon {...props} icon="logout" color={theme.colors.error} />}
-          onPress={() => {}}
+          onPress={() => signOut()}
         />
       </List.Section>
 

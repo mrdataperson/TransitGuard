@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+/* Theme: change a colour here and the whole app follows.
+   Existing classes (bg-black, text-gray-600, border...) read these variables. */
+@theme {
+  --font-sans: 'Barlow', ui-sans-serif, system-ui, sans-serif;
+  --font-board: 'Barlow Condensed', 'Barlow', ui-sans-serif, system-ui, sans-serif;
+
+  /* ink: deep navy, the primary colour */
+  --color-ink-50: #eef2f8;
+  --color-ink-100: #dce4f0;
+  --color-ink-200: #b9c7de;
+  --color-ink-500: #3c5a8c;
+  --color-ink-600: #2b4572;
+  --color-ink-700: #1e3358;
+  --color-ink-800: #15264a;
+  --color-ink-900: #0e1a33;
+
+  /* board: the amber of a bus destination board */
+  --color-board-400: #ffb703;
+  --color-board-500: #f2a100;
+
+  /* primary buttons, selected tabs, charts */
+  --color-black: #15264a;
+
+  /* cool paper greys */
+  --color-gray-50: #f2f4f8;
+  --color-gray-100: #e7ebf2;
+  --color-gray-200: #d5dbe6;
+  --color-gray-300: #bac3d3;
+  --color-gray-400: #8e9ab0;
+  --color-gray-500: #66738b;
+  --color-gray-600: #4b566b;
+  --color-gray-700: #353e52;
+  --color-gray-800: #232b3b;
+  --color-gray-900: #131a28;
+  --color-gray-950: #0b101a;
+}
+
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button { border-color: var(--color-gray-200); }
+  html { font-size: 106.25%; }
+  body { background-color: var(--color-gray-50); color: var(--color-gray-900); -webkit-font-smoothing: antialiased; }
+}
+
+/* Look and feel. These sit outside the layers on purpose, so they win over utilities. */
+.rounded { border-radius: 0.5rem; }
+.rounded-lg { border-radius: 0.75rem; }
+
+/* cards are flat paper: white, hairline border, crisp corners, no shadow */
+:where(div, ul, li, label).rounded.border,
+button.rounded.border:not([class*="bg-"]) {
+  background-color: #fff;
+  border-radius: 0.375rem;
+}
+
+input, select, textarea { background-color: #fff; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-ink-500); outline-offset: 1px; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--color-ink-500); outline-offset: 2px; }
+
+button { cursor: pointer; transition: background-color 0.15s, opacity 0.15s, transform 0.1s; }
+button:disabled { cursor: not-allowed; }
+button:active:not(:disabled) { transform: scale(0.98); }
+button.bg-black:hover:not(:disabled) { background-color: var(--color-ink-600); }
+
+@media (prefers-reduced-motion: reduce) {
+  button { transition: none; }
+  button:active:not(:disabled) { transform: none; }
+}

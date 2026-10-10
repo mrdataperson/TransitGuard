@@ -13,6 +13,7 @@ function ago(iso: string, now: number) {
 }
 
 function notify(body: string) {
+  if (body.startsWith('SOS')) return; // the SOS watcher handles these with the alarm
   try {
     if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
       new Notification('TransitGuard', { body });

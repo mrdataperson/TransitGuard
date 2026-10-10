@@ -8,7 +8,7 @@ import LoginPage from './pages/LoginPage';
 import { homePathFor } from './pages/paths';
 import { AlertOverlay, startAlertEngine } from './segments/alerts';
 import { AnalysisPage, startTripRecorder } from './segments/analysis';
-import { LinkPanel, ParentDashboard, startChildCareSync } from './segments/childcare';
+import { LinkPanel, ParentDashboard, SosSetup, SosWatcher, startChildCareSync } from './segments/childcare';
 
 function RoleHome() {
   const role = useAuthStore((s) => s.role);
@@ -47,16 +47,19 @@ export default function App() {
           <Route
             path="dashboard"
             element={
-            <RequireRole allow={['adult']}>
-              <ParentDashboard />
-            </RequireRole>
+              <RequireRole allow={['adult']}>
+                <>
+                  <SosSetup />
+                  <ParentDashboard />
+                </>
+              </RequireRole>
             }
-            
           />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <AlertOverlay />
+      <SosWatcher />
     </BrowserRouter>
   );
 }

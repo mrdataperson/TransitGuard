@@ -5,6 +5,7 @@ import type { GeoPoint, Trip } from '../../contract/types';
 import { distanceM } from '../../core/geo';
 import { useAuthStore } from '../../core/authStore';
 import { supabase } from '../../core/supabaseClient';
+import { sendSosPush } from './push';
 
 export type LiveStatus = 'active' | 'arrived' | 'ended';
 
@@ -127,7 +128,9 @@ export function startChildCareSync(): () => void {
         patch.accuracy = position.accuracy ?? null;
         patch.distance_m = distanceM(position, t.dest);
       }
-      void t.ready.then(() => patchTrip(tripId, patch, 4)); // SOS gets extra retries
+            void t.ready
+        .then(() => patchTrip(tripId, patch, 4)) // SOS gets extra retries
+        .then(() => sendSosPush(tripId)); // then push to the parents' phones
     }),
 
     on('TRIP_ENDED', ({ trip }) => {
